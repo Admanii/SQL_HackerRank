@@ -7,3 +7,4 @@ WHERE d.score = s.score
 GROUP BY s.hacker_id, h.name
 HAVING COUNT(h.name) > 1
 ORDER BY COUNT(h.name) DESC, s.hacker_id ASC;
+-- Apparently works with inner join too xD
