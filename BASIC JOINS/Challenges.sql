@@ -11,13 +11,16 @@ HAVING challenges_created = (
         GROUP BY c1.hacker_id
         ORDER BY count(*) desc
         limit 1
-    )
+    ) 
+    -- ^^ Gets the highest count
     or challenges_created NOT IN (
         SELECT count(c2.challenge_id)
         FROM Challenges AS c2
         GROUP BY c2.hacker_id
         HAVING c2.hacker_id <> c.hacker_id
     )
+    -- ^^ Get the unrepeated unique totals, is actually 
+    -- for repeated values but not in results in desired unique result
 ORDER BY challenges_created DESC,
     c.hacker_id;
 
